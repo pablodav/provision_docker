@@ -1,3 +1,4 @@
+
 [![Build Status](https://travis-ci.org/chrismeyersfsu/provision_docker.svg?branch=master)](https://travis-ci.org/chrismeyersfsu/provision_docker)
 
 
@@ -59,6 +60,34 @@ The route does not persist across reboots. To persist the changes edit `/Library
 
 ## Mac OS X + docker-machine + VMware Fusion
 `sudo /sbin/route -n add -net 172.17.0.0 -netmask 255.255.0.0 -gateway $(docker-machine ip default)`
+
+VARS:
+=====
+
+Defaults/main.yml: 
+
+    ---
+    provision_docker_tmp_file: "/tmp/pod.yml"
+    provision_docker_image_default: "chrismeyers/centos6"
+    provision_docker_privileged: true
+    provision_docker_ip: "127.0.0.1"
+    provision_docker_stop_timeout: "720"
+    provision_docker_ssh_user: "root"
+    provision_docker_ssh_pass: "docker.io"
+    provision_docker_use_tls: "encrypt"
+    provision_docker_state: "reloaded"
+    provision_docker_inventory: []
+    provision_docker_inventory_group: []
+    provision_docker_use_kubernetes: false
+    provision_docker_groups:
+      - 'docker_containers'
+    provision_docker_restart_policy: "no"
+    provision_docker_tty: "yes"
+
+You can use it when calling the role or on inventory per host/group.
+
+Options: 
+https://docs.ansible.com/ansible/docker_module.html
 
 ## Similar Work
 

@@ -13,3 +13,5 @@ provision_docker_inventory_group: []
 provision_docker_use_kubernetes: false
 provision_docker_groups:
   - 'docker_containers'
+provision_docker_restart_policy: "no"
+provision_docker_tty: "no"
